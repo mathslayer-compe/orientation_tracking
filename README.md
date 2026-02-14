@@ -2,17 +2,14 @@
 This project has 3 parts for computations described below and one part for plotting, the code for which is in `plotting.py`
 
 ## Abstract ([PDF](https://drive.google.com/uc?export=download&id=1SmmFjOQdmE1U0cPkOFgOtPyPE5qW-9Ys))
-This project investigates three-dimensional orienta
-tion tracking of a rotating rigid body using Inertial Measurement
-Unit (IMU) data, with application to panoramic image construc
-tion from onboard camera images. Angular velocity and linear
+This project investigates three-dimensional orientation tracking of a rotating rigid body using Inertial Measurement
+Unit (IMU) data, with application to panoramic image construction from onboard camera images. Angular velocity and linear
 acceleration measurements from a gyroscope and accelerometer
 are used to estimate orientation in the absence of continuous
 ground-truth sensing. Raw IMU data are first calibrated to
 remove sensor biases and converted from analog-to-digital units
 into physically meaningful quantities. An initial orientation
-trajectory is obtained through discrete-time quaternion integra
-tion of gyroscope measurements. Orientation estimation is then
+trajectory is obtained through discrete-time quaternion integration of gyroscope measurements. Orientation estimation is then
 formulated as a constrained trajectory optimization problem over
 unit quaternions that combines gyroscope motion dynamics and
 accelerometer gravity observations. The optimization is solved
@@ -146,3 +143,4 @@ Outputs:
 - Only datasets 1, 2, 8, 9 (train) and 10, 11 (test) have camera data for panorama generation
 
 - All outputs are saved to `results/train/` or `results/test/` directories
+
