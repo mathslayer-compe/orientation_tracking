@@ -1,6 +1,34 @@
 # Orientation Tracking with Projected Gradient Descent
 This project has 3 parts for computations described below and one part for plotting, the code for which is in `plotting.py`
 
+## Abstract ([PDF](https://drive.google.com/uc?export=download&id=1SmmFjOQdmE1U0cPkOFgOtPyPE5qW-9Ys))
+This project investigates three-dimensional orienta
+tion tracking of a rotating rigid body using Inertial Measurement
+Unit (IMU) data, with application to panoramic image construc
+tion from onboard camera images. Angular velocity and linear
+acceleration measurements from a gyroscope and accelerometer
+are used to estimate orientation in the absence of continuous
+ground-truth sensing. Raw IMU data are first calibrated to
+remove sensor biases and converted from analog-to-digital units
+into physically meaningful quantities. An initial orientation
+trajectory is obtained through discrete-time quaternion integra
+tion of gyroscope measurements. Orientation estimation is then
+formulated as a constrained trajectory optimization problem over
+unit quaternions that combines gyroscope motion dynamics and
+accelerometer gravity observations. The optimization is solved
+using projected gradient descent to enforce unit-norm quaternion
+constraints. Estimated orientations are evaluated against VICON
+motion capture ground truth on training datasets, demonstrat
+ing significant improvement over direct gyroscope integration,
+particularly for roll and pitch. Yaw accuracy remains limited
+due to the lack of complete information about rotation about the
+gravity axis. The optimized orientation estimates are then used
+to align camera images and generate panoramic reconstructions
+via equirectangular projection. Results demonstrate that this
+approach (projected gradient descent on trajectory quaternions)
+enables accurate orientation tracking and effective panorama
+generation using IMU and camera data alone.
+
 ## IMU Utilities (`imu_utils.py`)
 1) **IMU Calibration**: Calibrate IMU measurements by removing sensor biases and converting raw ADC values to physical units (acceleration in g, angular velocity in rad/s.) using scale factors derived from sensor specifications in IMU reference sheet
 
@@ -116,4 +144,5 @@ Outputs:
 ### Notes:
 - Steps must be run in order (1, 2, 3) as each step depends on outputs from previous steps
 - Only datasets 1, 2, 8, 9 (train) and 10, 11 (test) have camera data for panorama generation
+
 - All outputs are saved to `results/train/` or `results/test/` directories
